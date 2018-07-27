@@ -77,7 +77,7 @@ class Student
     list = []
     DB[:conn].execute(sql).map do |row|
       i = self.new_from_db(row)
-      list << row
+      list << i
     end
     list
   end
