@@ -92,7 +92,21 @@ class Student
 
     DB[:conn].execute(sql)
   end
+  def self.first_X_students_in_grade_10(X)
+    sql = <<-SQL
+      SELECT *
+      FROM students
+      WHERE grade = ?
+      LIMIT ?
+    SQL
 
+    list = []
+    DB[:conn].execute(sql, 10, X).map do |row|
+      i = self.new_from_db(row)
+      list << i
+    end
+    list
+  end
   def self.drop_table
     sql = "DROP TABLE IF EXISTS students"
     DB[:conn].execute(sql)
