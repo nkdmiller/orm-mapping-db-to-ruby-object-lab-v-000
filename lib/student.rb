@@ -68,6 +68,19 @@ class Student
     DB[:conn].execute(sql, self.name, self.grade)
   end
 
+  def self.all
+    sql = <<-SQL
+      SELECT *
+      FROM students
+    SQL
+
+    list = []
+    DB[:conn].execute(sql).map do |row|
+      i = self.new_from_db(row)
+      list << row
+    end
+    list
+  end  
   def self.create_table
     sql = <<-SQL
     CREATE TABLE IF NOT EXISTS students (
