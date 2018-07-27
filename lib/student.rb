@@ -54,7 +54,7 @@ class Student
 
     list = []
     DB[:conn].execute(sql, 12).map do |row|
-      list << row
+      list << row.name
     end
     list
   end
