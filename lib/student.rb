@@ -120,10 +120,8 @@ class Student
     list = []
     DB[:conn].execute(sql, 10, 1).map do |row|
       i = self.new_from_db(row)
-      binding.pry
-      list << i
     end
-    list
+    i
   end
   def self.drop_table
     sql = "DROP TABLE IF EXISTS students"
