@@ -39,9 +39,11 @@ class Student
       WHERE grade = ?
     SQL
 
+    list = []
     DB[:conn].execute(sql, 9).map do |row|
-      self.new_from_db(row)
-    end.first
+      list << row
+    end
+    list
   end
   def save
     sql = <<-SQL
