@@ -41,8 +41,7 @@ class Student
 
     list = []
     DB[:conn].execute(sql, 9).map do |row|
-      i = self.new_from_db(row)
-      list << i
+      list << row
     end
     list
   end
@@ -55,7 +54,8 @@ class Student
 
     list = []
     DB[:conn].execute(sql, 12).map do |row|
-      list << row
+      i = self.new_from_db(row)
+      list << i
     end
     list
   end
