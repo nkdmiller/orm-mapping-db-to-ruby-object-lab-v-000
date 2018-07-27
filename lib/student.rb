@@ -80,7 +80,7 @@ class Student
       list << row
     end
     list
-  end  
+  end
   def self.create_table
     sql = <<-SQL
     CREATE TABLE IF NOT EXISTS students (
